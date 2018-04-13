@@ -27,6 +27,7 @@ namespace Chapter_Six
     {
         Command[] onCommands;
         Command[] offCommands;
+        Command undoCommand;
 
         public RemoteControl()
         {
@@ -39,6 +40,8 @@ namespace Chapter_Six
                 onCommands[i] = noCommand;
                 offCommands[i] = noCommand;
             }
+
+            undoCommand = noCommand;
         }
 
         public void SetCommand(int slot, Command onCmd, Command offCmd)
@@ -50,11 +53,18 @@ namespace Chapter_Six
         public void onButtonWasPressed(int slot)
         {
             onCommands[slot].excute();
+            undoCommand = onCommands[slot];
         }
 
         public void offButtonWasPressed(int slot)
         {
             offCommands[slot].excute();
+            undoCommand = offCommands[slot];
+        }
+
+        public void undoButtonPressed()
+        {
+            undoCommand.undo();
         }
 
         public string CmdInfo()

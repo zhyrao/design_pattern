@@ -10,12 +10,14 @@ namespace Chapter_Six
     public interface Command
     {
         void excute();
+        void undo();
     }
 
     // 什么有没有的命令
     public class NoCommand : Command
     {
         public void excute() { }
+        public void undo() { }
     }
 
     // 打开灯命令
@@ -31,6 +33,11 @@ namespace Chapter_Six
         {
             light.on();
         }
+
+        public void undo()
+        {
+            light.off();
+        }
     }
     // 关闭灯命令
     public class LightOffCommand : Command
@@ -44,6 +51,11 @@ namespace Chapter_Six
         public void excute()
         {
             light.off();
+        }
+
+        public void undo()
+        {
+            light.on();
         }
     }
 
@@ -60,6 +72,12 @@ namespace Chapter_Six
             garage.up();
             garage.lightOn();
         }
+
+        public void undo()
+        {
+            garage.lightOff();
+            garage.down();
+        }
     }
 
 
@@ -75,6 +93,132 @@ namespace Chapter_Six
         {
             garage.down();
             garage.lightOff();
+        }
+
+        public void undo()
+        {
+            garage.up();
+            garage.lightOn();
+        }
+    }
+
+    // 风扇转速命令
+    public class CeilingFanHighCommand:Command
+    {
+        CeilingFan ceilingFan;
+        int previousSpeed;
+
+        public CeilingFanHighCommand(CeilingFan fan)
+        {
+            ceilingFan = fan;
+        }
+
+        public void excute()
+        {
+            previousSpeed = ceilingFan.getSpeed();
+            ceilingFan.high();
+        }
+
+        public void undo()
+        {
+            if (previousSpeed == CeilingFan.HIGH)
+                ceilingFan.high();
+            else if (previousSpeed == CeilingFan.MEDIUM)
+                ceilingFan.medium();
+            else if (previousSpeed == CeilingFan.LOW)
+                ceilingFan.low();
+            else if (previousSpeed == CeilingFan.OFF)
+                ceilingFan.off();
+        }
+    }
+
+    // 风扇转速命令
+    public class CeilingFanMediumCommand : Command
+    {
+        CeilingFan ceilingFan;
+        int previousSpeed;
+
+        public CeilingFanMediumCommand(CeilingFan fan)
+        {
+            ceilingFan = fan;
+        }
+
+        public void excute()
+        {
+            previousSpeed = ceilingFan.getSpeed();
+            ceilingFan.medium();
+        }
+
+        public void undo()
+        {
+            if (previousSpeed == CeilingFan.HIGH)
+                ceilingFan.high();
+            else if (previousSpeed == CeilingFan.MEDIUM)
+                ceilingFan.medium();
+            else if (previousSpeed == CeilingFan.LOW)
+                ceilingFan.low();
+            else if (previousSpeed == CeilingFan.OFF)
+                ceilingFan.off();
+        }
+    }
+
+    // 风扇转速命令
+    public class CeilingFanLowCommand : Command
+    {
+        CeilingFan ceilingFan;
+        int previousSpeed;
+
+        public CeilingFanLowCommand(CeilingFan fan)
+        {
+            ceilingFan = fan;
+        }
+
+        public void excute()
+        {
+            previousSpeed = ceilingFan.getSpeed();
+            ceilingFan.low();
+        }
+
+        public void undo()
+        {
+            if (previousSpeed == CeilingFan.HIGH)
+                ceilingFan.high();
+            else if (previousSpeed == CeilingFan.MEDIUM)
+                ceilingFan.medium();
+            else if (previousSpeed == CeilingFan.LOW)
+                ceilingFan.low();
+            else if (previousSpeed == CeilingFan.OFF)
+                ceilingFan.off();
+        }
+    }
+
+    // 风扇转速命令
+    public class CeilingFanOffCommand : Command
+    {
+        CeilingFan ceilingFan;
+        int previousSpeed;
+
+        public CeilingFanOffCommand(CeilingFan fan)
+        {
+            ceilingFan = fan;
+        }
+
+        public void excute()
+        {
+            previousSpeed = ceilingFan.getSpeed();
+            ceilingFan.off();
+        }
+
+        public void undo()
+        {
+            if (previousSpeed == CeilingFan.HIGH)
+                ceilingFan.high();
+            else if (previousSpeed == CeilingFan.MEDIUM)
+                ceilingFan.medium();
+            else if (previousSpeed == CeilingFan.LOW)
+                ceilingFan.low();
+            else if (previousSpeed == CeilingFan.OFF)
+                ceilingFan.off();
         }
     }
 }
