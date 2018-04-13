@@ -95,4 +95,17 @@ namespace Chapter_Six
             Console.WriteLine("Fan Off");
         }
     }
+
+    public class TV
+    {
+        public void on()
+        {
+            Console.WriteLine("TV is on");
+        }
+
+        public void off()
+        {
+            Console.WriteLine("TV is off");
+        }
+    }
 }

@@ -221,4 +221,64 @@ namespace Chapter_Six
                 ceilingFan.off();
         }
     }
+
+    // 组合系列命令
+    public class MacroCommand: Command
+    {
+        Command[] commands;
+
+        public MacroCommand(Command[] cmds)
+        {
+            this.commands = cmds;
+        }
+
+        public void excute()
+        {
+            for (int i = 0; i < commands.Length; i++)
+            {
+                commands[i].excute();
+            }
+        }
+
+        public void undo()
+        {
+            for (int i = 0; i < commands.Length; i++)
+            {
+                commands[i].undo();
+            }
+        }
+    }
+
+    public class TVOnCommand:Command
+    {
+        TV tv;
+        public TVOnCommand(TV tv)
+        { this.tv = tv; }
+        public void excute()
+        {
+            tv.on();
+        }
+
+        public void undo()
+        {
+            tv.off();
+        }
+    }
+
+    public class TVOffCommand:Command
+    {
+        TV tv;
+        public TVOffCommand(TV tv)
+        { this.tv = tv; }
+
+        public void excute()
+        {
+            tv.off();
+        }
+
+        public void undo()
+        {
+            tv.on();
+        }
+    }
 }

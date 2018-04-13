@@ -30,12 +30,12 @@ namespace Chapter_Six
 
             RemoteControl remoteControl = new RemoteControl();
 
-            //Light light = new Light();
-            //LightOnCommand lightonCmd = new LightOnCommand(light);
-            //LightOffCommand lightoffCmd = new LightOffCommand(light);
-            //Garage garage = new Garage();
-            //GarageOnCommand garageOnCmd = new GarageOnCommand(garage);
-            //GarageOffCommand garageOffCmd = new GarageOffCommand(garage);
+            Light light = new Light();
+            LightOnCommand lightonCmd = new LightOnCommand(light);
+            LightOffCommand lightoffCmd = new LightOffCommand(light);
+            Garage garage = new Garage();
+            GarageOnCommand garageOnCmd = new GarageOnCommand(garage);
+            GarageOffCommand garageOffCmd = new GarageOffCommand(garage);
 
             //remoteControl.SetCommand(0, lightonCmd, lightoffCmd);
             //remoteControl.SetCommand(1, garageOnCmd, garageOffCmd);
@@ -67,6 +67,26 @@ namespace Chapter_Six
             remoteControl.onButtonWasPressed(1);
             remoteControl.offButtonWasPressed(1);
             remoteControl.undoButtonPressed();
+
+
+
+            TV tv = new TV();
+            TVOnCommand tvOnCmd = new TVOnCommand(tv);
+            TVOffCommand tvOffCmd = new TVOffCommand(tv);
+
+            Command[] onCmds = { lightonCmd, tvOnCmd, garageOnCmd };
+            Command[] offCmds = { lightoffCmd, tvOffCmd, garageOffCmd };
+
+            MacroCommand macroOnCmd = new MacroCommand(onCmds);
+            MacroCommand macroOffCmd = new MacroCommand(offCmds);
+
+            remoteControl.SetCommand(2, macroOnCmd, macroOffCmd);
+            Console.WriteLine(remoteControl.CmdInfo());
+
+            remoteControl.onButtonWasPressed(2);
+            remoteControl.undoButtonPressed();
+            remoteControl.offButtonWasPressed(2);
+
             Console.ReadKey();
         }
     }
