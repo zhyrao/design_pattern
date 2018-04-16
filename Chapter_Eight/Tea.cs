@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 
 namespace Chapter_Eight
 {
-    public class Coffee
+    public class Tea
     {
-        public void prepareRecipte()
+
+        void prepareRecipe()
         {
             boilWater();
-            brewCoffeeGrinds();
+            steepTeaBag();
             pourInCup();
-            addSugarAndMilk();
+            addLemon();
         }
 
         public void boilWater()
@@ -21,9 +22,9 @@ namespace Chapter_Eight
             Console.WriteLine("Boiling water");
         }
 
-        public void brewCoffeeGrinds()
+        public void steepTeaBag()
         {
-            Console.WriteLine("Dripping Coffee through filter");
+            Console.WriteLine("Steeping the tea bag");
         }
 
         public void pourInCup()
@@ -31,9 +32,15 @@ namespace Chapter_Eight
             Console.WriteLine("Pouring into cup");
         }
 
-        public void addSugarAndMilk()
+        public void addLemon()
         {
-            Console.WriteLine("Adding sugar and milk");
+            Console.WriteLine("Adding lemon");
         }
+
     }
+
+    /* 这个泡茶的类和冲咖啡的类中有很多相同和相似的
+     * 方法。那么可以先单独将相同的方法抽出来作为基类
+     * 再处理相似的方法。
+     */
 }
