@@ -18,5 +18,17 @@ namespace Chapter_Eight
         {
             Console.WriteLine("Add condiments in coffee");
         }
+
+        public override bool customerWantsCondiments()
+        {
+            Console.WriteLine("Would u like some tea or milk in you Coffee?\n");
+
+            string readin = Console.ReadLine();
+
+            if (readin.ToLower().Contains("y"))
+                return true;
+
+            return false;
+        }
     }
 }

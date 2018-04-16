@@ -14,7 +14,8 @@ namespace Chapter_Eight
             boilWater();
             brew();
             pourInCup();
-            addCondiments();
+            if (customerWantsCondiments())
+                addCondiments();
         }
 
         public abstract void brew();
@@ -30,5 +31,7 @@ namespace Chapter_Eight
         {
             Console.WriteLine("pouring in the cup");
         }
+
+        public abstract bool customerWantsCondiments();
     }
 }
