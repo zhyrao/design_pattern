@@ -10,6 +10,10 @@ namespace Chapter_Eight
     {
         static void Main(string[] args)
         {
+            NewCoffee nCoffee = new NewCoffee();
+            nCoffee.prepareRecipe();
+
+            Console.ReadKey();
         }
     }
 }
