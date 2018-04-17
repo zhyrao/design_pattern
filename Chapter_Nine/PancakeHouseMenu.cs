@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Chapter_Nine
 {
-    public class PancakeHouseMenu
+    public class PancakeHouseMenu : Menu
     {
         ArrayList menuItems;
 

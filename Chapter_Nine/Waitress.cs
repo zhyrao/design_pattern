@@ -8,10 +8,10 @@ namespace Chapter_Nine
 {
     public class Waitress
     {
-        PancakeHouseMenu pancakeMenu;
-        DinerMenu dinerMenu;
+        Menu pancakeMenu;
+        Menu dinerMenu;
 
-        public Waitress(PancakeHouseMenu pancakeMenu, DinerMenu dinerMenu)
+        public Waitress(Menu pancakeMenu, Menu dinerMenu)
         {
             this.pancakeMenu = pancakeMenu;
             this.dinerMenu = dinerMenu;
