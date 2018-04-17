@@ -44,6 +44,11 @@ namespace Chapter_Nine
             }
         }
 
+        public Iterator createIterator()
+        {
+            return new DinerMenuIterator(menuItems);
+        }
+
         public MenuItem[] getMenuItems()
         {
             return menuItems;

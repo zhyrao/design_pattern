@@ -42,6 +42,11 @@ namespace Chapter_Nine
             menuItems.Add(menuItem);
         }
 
+        public Iterator createIterator()
+        {
+            return new PancakeHouseIterator(menuItems);
+        }
+
         public ArrayList getMenuItems()
         {
             return menuItems;
